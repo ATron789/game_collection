@@ -1,0 +1,87 @@
+$green: #00cc00;
+$black: #000000;
+$white: #fff;
+$main-font: Helvetica, Arial, sans-serif;
+
+body {
+  font-family: $main-font;
+  background-color: $black
+}
+
+header h1 {
+  font-size: 40px;
+  line-height: 80px;
+  background: transparent url(/images/solid_snake.png) 0 0 no-repeat;
+  padding-left: 200px;
+}
+h1 {
+  color: $green ;
+  font: 32px/1 Helvetica, Arial, sans-serif;
+}
+h2 {
+  color: red;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+}
+@mixin tabs ($background: blue, $color: yellow) {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: $background;
+    overflow: hidden;
+}
+li {
+    float: left;
+  }
+a {
+  text-decoration: none; display: block;
+  padding: 8px;
+  background: $background;
+  color: $color;
+  &:hover {
+      background: lighten($background, 20%);
+    }
+} }
+@mixin game_tabs ($background: $black, $color: $white) {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: $background;
+    overflow: hidden;
+    font-weight: bold;
+  }
+  li {
+    float: left;
+  }
+  a {
+    text-decoration: none; display: block;
+    color: $color;
+    padding: 20px;
+    &.ps4 {
+      background-color: #3366ff;
+    }
+    &.xbox{
+      background-color: #00b300;
+    }
+    &.xbox360{
+      background-color: #00ff00;
+    }
+    &:hover {
+        background: lighten($background, 20%);
+      }
+
+  }
+}
+nav#home-about-contact {
+  @include tabs ($background: $black, $color: $white);
+  font-weight: bold;
+}
+nav#games {
+  @include game_tabs
+}
+
+p{
+  font: 13px/1.4 $main-font;
+  color: $white;
+}
