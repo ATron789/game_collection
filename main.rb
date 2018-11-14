@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'slim'
 require 'sass'
-require_relative 'ps4'
+require 'sequel'
 
 get('/styles.css'){ scss :styles }
 
@@ -17,10 +17,6 @@ end
 get '/contact' do
   slim :contact
 end
-
-# get '/ps4' do
-#   slim :ps4
-# end
 
 not_found do
   slim :not_found
