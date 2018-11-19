@@ -3,7 +3,6 @@ require 'sinatra/reloader'
 require 'slim'
 require 'sass'
 require 'sequel'
-require './games'
 require './ps4'
 
 get('/styles.css'){ scss :styles }
