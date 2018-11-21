@@ -28,7 +28,8 @@ get '/ps4' do
   slim :ps4
 end
 get '/ps4/new' do
-  @ps4 = Ps4.new
+  @ps4_game = Ps4.new
+  binding.pry
   slim :new_ps4
 end
 get '/ps4/:id' do
