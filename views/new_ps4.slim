@@ -1,3 +1,9 @@
 h1 Add A New Song
 form method="POST" action="/ps4"
-  == slim :ps4_form
+  label for="title" Title:
+  input#title type="text" name="ps4[title]" value=""
+  label for="info" Info:
+  input#length type="text" name="ps4[info]" value=""
+  label for="release_date" Date(dd/mm/yyyy):
+  input#released_on type="text" name="ps4[release_date]" value=""
+  input type="submit" value="Save Game"

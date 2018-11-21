@@ -1,5 +1,5 @@
 h1= @ps4_game.title
-p Release Date: #{@ps4_game.release_date.strftime("%e %B %Y") if @ps4_game.release_date}
+p Release Date: #{@ps4_game.release_date_string if @ps4_game.release_date}
 p Info: #{@ps4_game.info}
 img src="/images/ps4/#{@ps4_game.title.downcase.split.join}.jpg" alt="#{@ps4_game.title}" height="600" width="530"
 p: a href="/ps4" Go back to the Ps4 list
