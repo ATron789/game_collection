@@ -1,1 +1,7 @@
-
+  label for="title" Title:
+  input#title type="text" name="ps4[title]" value="#{@ps4_game.title}"
+  label for="info" Info:
+  textarea#info type="text" name="ps4[info]" =="#{@ps4_game.info}"
+  label for="release_date" Date(dd/mm/yyyy):
+  input#released_on type="text" name="ps4[release_date]" value="#{@ps4_game.release_date_string if @ps4_game.release_date}"
+  input type="submit" value="Save Game"

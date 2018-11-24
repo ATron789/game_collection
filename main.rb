@@ -29,8 +29,7 @@ get '/ps4' do
 end
 get '/ps4/new' do
   @ps4_game = Ps4.new
-  binding.pry
-  slim :new_ps4
+  slim :ps4_new_edit
 end
 get '/ps4/:id' do
   @ps4_game = Ps4[params[:id]]
@@ -43,4 +42,21 @@ post '/ps4' do
   @new_ps4.save
   binding.pry
   redirect "/ps4/#{@new_ps4[:id]}"
+end
+
+get '/ps4/:id/edit' do
+  @ps4_game = Ps4[params[:id]]
+  slim :ps4_new_edit
+end
+
+put '/ps4/:id' do
+  binding.pry
+  @ps4_game = Ps4[params[:id]]
+  @ps4_game.update(params[:ps4])
+  redirect "/ps4/#{@ps4_game.id}"
+end
+
+delete '/ps4/:id' do
+  Ps4[params[:id]].destroy
+  redirect to('/ps4')
 end

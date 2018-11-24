@@ -1,0 +1,4 @@
+h1= "Edit #{@ps4_game.title}"
+form method="POST" action="/ps4/#{@ps4_game.id}"
+  input type="hidden" name="_method" value="PUT"
+  == slim :ps4_form
