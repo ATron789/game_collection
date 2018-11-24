@@ -14,7 +14,7 @@ class Ps4 < Sequel::Model(DATABASE[:ps4])
     url_wiki = "https://en.wikipedia.org/wiki/" + self.title.gsub(/ /, "_")
     parsed_wiki = Nokogiri::HTML.parse(open(url_wiki))
     game_info = parsed_wiki.css("div.mw-parser-output p")[1].text
-    self.info = game_info
+    self.update(info: game_info)
     #it does not update it...
   end
 end
