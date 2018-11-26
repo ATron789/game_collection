@@ -50,7 +50,6 @@ get '/ps4/:id/edit' do
 end
 
 put '/ps4/:id' do
-  binding.pry
   @ps4_game = Ps4[params[:id]]
   @ps4_game.update(params[:ps4])
   redirect "/ps4/#{@ps4_game.id}"
