@@ -5,12 +5,8 @@ require 'open-uri'
 
 class Ps4 < Sequel::Model(DATABASE[:ps4])
   def release_date=(date)
-    begin
-      Date.strptime(date, "%e/%m/%Y")
-      super
-    rescue
-      self[:release_date] = "n/a"
-    end
+    Date.strptime(date, "%e/%m/%Y")
+    super
   end
   def release_date_string
     self[:release_date].strftime("%e %B %Y")

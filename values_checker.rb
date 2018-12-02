@@ -1,21 +1,26 @@
 class ValuesChecker
-  def self.check_params(par_hash)
+  @@inv_val = []
+  def self.right_inputs(par_hash)
+    empty_values(par_hash)
+    date_format(par_hash)
   end
 
+  def self.reset
+    @@inv_val = []
+  end
+
+  private
   def self.empty_values(par_hash)
-    empty_values = Array.new
-    par_hash.each_pair do |key,val|
-      empty_values.push(key) if val == ""
+    par_hash.each_pair do |k,v|
+      @@inv_val.push(k) if v == ""
     end
-    return empty_values
   end
-
-  def self.right_date(par_hash)
+  def self.date_format(par_hash)
     begin
-      Date.strptime(par_hash[:release_date], "%e/%m/%Y")
-      return nil
-    rescue ArgumentError
-      return :release_date
+      return Date.strptime(par_hash["release_date"], "%e/%m/%Y")
+    rescue
+      return nil if @@inv_val.push.include? "release_date"
+      @@inv_val.push("release_date")
     end
   end
 end

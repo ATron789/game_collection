@@ -1,8 +1,12 @@
   label for="title" Title:
+  - if ValuesChecker.class_variable_get(:@@inv_val).include? "title"
+    p style="color: red" Please type in a valid title
   input#title type="text" name="ps4[title]" value="#{@ps4_game.title}"
   - unless @ps4_game.info == nil
     label for="info" Info:
     textarea#info cols='60' rows='8' type="text" name="ps4[info]" =="#{@ps4_game.info}"
   label for="release_date" Date(dd/mm/yyyy):
+  - if ValuesChecker.class_variable_get(:@@inv_val).include? "release_date"
+    p style="color: red" Please type in a valid release date
   input#released_on type="text" name="ps4[release_date]" value="#{@ps4_game.release_date_string_num if @ps4_game.release_date}"
   input type="submit" value="Save Game"

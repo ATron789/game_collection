@@ -12,12 +12,13 @@ get '/ps4/:id' do
 end
 
 post '/ps4' do
-  # if ValuesChecker.check_params(params[:ps4])
-  #   redirect '/ps4/new'
-  # end
+  ValuesChecker.reset
+  ValuesChecker.right_inputs(params[:ps4])
+  unless ValuesChecker.class_variable_get(:@@inv_val).empty?
+    redirect '/ps4/new'
+  end
   @new_ps4 = Ps4.new
   @new_ps4.set(params[:ps4])
-  binding.pry
   @new_ps4.save
   redirect "/ps4/#{@new_ps4[:id]}"
 end

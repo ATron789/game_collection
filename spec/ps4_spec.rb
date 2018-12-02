@@ -31,10 +31,7 @@ describe Ps4 do
     it 'checks if the date is valid' do
       expect(batman.valid_date?).to be false
     end
-    it 'if no dates is inserted it handles the error' do
-      batman.release_date=(nil)
-      expect(batman.release_date).to eq "n/a"
-    end
+
   end
 
 end
