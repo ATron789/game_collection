@@ -5,8 +5,12 @@ require 'open-uri'
 
 class Ps4 < Sequel::Model(DATABASE[:ps4])
   def release_date=(date)
-    Date.strptime(date, "%e/%m/%Y")
-    super
+    begin
+      Date.strptime(date, "%e/%m/%Y")
+      super
+    rescue
+      self[:release_date] = "n/a"
+    end
   end
   def release_date_string
     self[:release_date].strftime("%e %B %Y")
@@ -22,7 +26,9 @@ class Ps4 < Sequel::Model(DATABASE[:ps4])
     info_wiki
     set_art_cover
   end
-
+  def valid_date?
+    self[:release_date] != nil
+  end
   private
   def info_wiki
     url_wiki = "https://en.wikipedia.org/wiki/" + self.title.gsub(/ /, "_")

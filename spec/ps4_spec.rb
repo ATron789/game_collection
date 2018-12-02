@@ -7,11 +7,10 @@ describe Ps4 do
   end
 
   context 'new entry' do
-
+    let (:lastid_num) {Ps4.last.id.next}
+    #this up messes up the last.id.next spec
     let (:batman) do
-      batman = Ps4.new
-      batman.set(title: "Batman: Arkham Knight")
-      batman.save
+      batman = Ps4.create(title: "Batman: Arkham Knight")
     end
     after(:each) do
       Ps4.where(title: "Batman: Arkham Knight").destroy
@@ -28,6 +27,13 @@ describe Ps4 do
       parsed_wiki = Nokogiri::HTML.parse(open(url_wiki))
       game_info = parsed_wiki.css("div.mw-parser-output p")[1].text.gsub("\n", " ")
       expect(batman.info).to eq game_info
+    end
+    it 'checks if the date is valid' do
+      expect(batman.valid_date?).to be false
+    end
+    it 'if no dates is inserted it handles the error' do
+      batman.release_date=(nil)
+      expect(batman.release_date).to eq "n/a"
     end
   end
 
