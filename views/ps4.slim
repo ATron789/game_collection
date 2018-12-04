@@ -1,8 +1,0 @@
-h1 Ps4 Games
-a href="/ps4/new" Add a new PS4 game
-- if @ps4.any?
-  ul#ps4
-    -@ps4.each do |game|
-      li: a href="/ps4/#{game.id}" #{game.title}
-- else
-  p No games in here yet

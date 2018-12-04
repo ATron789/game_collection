@@ -1,0 +1,9 @@
+- if @game.values == {}
+  h1 Add a new game
+  form method="POST" action="/new"
+    == slim :ne_form
+- else
+  h1= "Edit #{@game.title}"
+  form method="POST" action="/ps4/#{@game.id}"
+    input type="hidden" name="_method" value="PUT"
+      == slim :ne_form

@@ -1,0 +1,8 @@
+h1 #{params[:console].capitalize} Games
+a href="/new" Add a new game
+- if @games.any?
+  ul#ps4
+    -@games.each do |game|
+      li: a href="/#{game.console}/#{game.id}" #{game.title}
+- else
+  p No games in here yet

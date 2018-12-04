@@ -1,0 +1,22 @@
+  label for="title" Title:
+  - if ValuesChecker.class_variable_get(:@@inv_val).include? "title"
+    p style="color: red" Please type in a valid title
+  input#title type="text" name="game[title]" value="#{@game.title}" required
+  - unless @game.info == nil
+    label for="info" Info:
+    textarea#info cols='60' rows='8' type="text" name="game[info]" =="#{@game.info}"
+  label for="release_date" Date(dd/mm/yyyy):
+  - if ValuesChecker.class_variable_get(:@@inv_val).include? "release_date"
+    p style="color: red" Please type in a valid release date
+  input#released_on type="text" name="game[release_date]" value="#{@game.release_date_string_num if @game.release_date}"
+  input type="submit" value="Save Game"
+  div.console-type
+    label
+      input type="radio" name="game[console]" value="ps4" checked="checked"
+      img src="/images/logo/ps4_logo.png"
+    label
+      input type="radio" name="game[console]" value="xbox" checked="checked"
+      img src="/images/logo/xbox_logo.png"
+    label
+      input type="radio" name="game[console]" value="xbox360" checked="checked"
+      img src="/images/logo/xbox360_logo.png" 

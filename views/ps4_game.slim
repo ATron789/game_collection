@@ -1,9 +1,0 @@
-h1= @ps4_game.title
-p Release Date: #{@ps4_game.release_date_string if @ps4_game.release_date}
-p class="info" #{@ps4_game.info}
-img src="/images/ps4/#{@ps4_game.pic_link}" alt="#{@ps4_game.title}" height="600" width="530"
-p: a href="/ps4" Go back to the Ps4 list
-p: a href="/ps4/#{@ps4_game.id}/edit" Edit this Game
-form action="/ps4/#{@ps4_game.id}" method="POST"
-  input type="hidden" name="_method" value="DELETE"
-  input type="submit" value="delete this game"

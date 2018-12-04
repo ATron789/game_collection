@@ -89,3 +89,9 @@ label {
   color: white;
   display: block;
 }
+div.console-type {
+  & img {
+  max-width: 75px;
+  max-height: 75px;
+  }
+}

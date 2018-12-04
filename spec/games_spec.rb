@@ -1,19 +1,20 @@
-require './ps4'
+require './games'
 
-describe Ps4 do
-  let (:fo4) {Ps4[title: "Fallout 4"]}
+describe Games do
+  let (:fo4) {Games[title: "Fallout 4"]}
+
   it 'shows the date' do
     expect(fo4.release_date_string).to eq "10 November 2015"
   end
 
   context 'new entry' do
-    let (:lastid_num) {Ps4.last.id.next}
+    let (:lastid_num) {Games.last.id.next}
     #this up messes up the last.id.next spec
     let (:batman) do
-      batman = Ps4.create(title: "Batman: Arkham Knight")
+      batman = Games.create(title: "Batman: Arkham Knight")
     end
     after(:each) do
-      Ps4.where(title: "Batman: Arkham Knight").destroy
+      Games.where(title: "Batman: Arkham Knight").destroy
     end
 
     it 'the next entry id is the next value of the last entry' do
