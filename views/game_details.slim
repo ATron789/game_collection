@@ -1,6 +1,6 @@
 div
   h1 display="inline"  =@game.title
-  img src="/images/logo/#{@game.console}_logo.png" style="max-width: 100px"
+  img.logo src="/images/logo/#{@game.console}_logo.png" 
   / alignment to be fix
 
 p Release Date: #{@game.release_date_string if @game.release_date}

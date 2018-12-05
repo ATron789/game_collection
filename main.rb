@@ -4,6 +4,7 @@ require 'slim'
 require 'sass'
 require './game_routes'
 require './games'
+require './console'
 require './values_checker'
 
 get('/styles.css'){ scss :styles }
@@ -56,6 +57,12 @@ get '/:console/:id/edit' do
 end
 
 put '/:console/:id' do
+  ValuesChecker.reset
+  ValuesChecker.right_inputs(params[:game])
+  unless ValuesChecker.class_variable_get(:@@inv_val).empty?
+    redirect "/#{params[:console]}/#{params[:id]}/edit"
+  end
+  binding.pry
   @game = Games[params[:id]]
   @game.update(params[:game])
   redirect "/#{@game.console}/#{@game.id}"

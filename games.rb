@@ -39,6 +39,8 @@ class Games < Sequel::Model(DATABASE[:games])
   def set_art_cover
     self.update(pic_link: "#{self.title.downcase.split.join.gsub(/[\W\s]/, "")}.jpg")
   end
+  many_to_many :consoles, left_key: :id, right_key: :console_id,
+    join_table: :consolesgames
 end
 
 # wiki.css("div.mw-parser-output p")[1].text
