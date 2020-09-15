@@ -41,5 +41,6 @@ class Games < Sequel::Model(DATABASE[:games])
   end
 end
 
+# MAKE SOME CLEANING BELOW
 # wiki.css("div.mw-parser-output p")[1].text
 # this is the parsing path for the first paragraph of wikipedia
